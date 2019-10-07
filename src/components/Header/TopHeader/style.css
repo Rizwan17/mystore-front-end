@@ -1,0 +1,28 @@
+.TopHeader{
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.TopMenu{
+    position: relative;
+}
+.Dropdown.Account{
+    width: 150px;
+    right: 0;
+    padding: 0;
+}
+.Dropdown.Account > li{
+    width: 100%;
+    float: none;
+    padding: 10px 0;
+}
+.Dropdown.Account > li > a{
+    display: block;
+    padding: 5px 20px;
+    font-family: 'Lato', sans-serif;
+}
+.Dropdown.Account > li > a:hover{
+    background: #eee;
+}

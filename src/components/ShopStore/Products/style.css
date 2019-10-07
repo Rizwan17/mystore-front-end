@@ -1,0 +1,53 @@
+.Content{
+    width: 85%;
+    border-top: 3px solid #000;
+    margin: 0 auto;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.ContentTitle{
+    text-align: center;
+    margin: 20px 0;
+}
+.CategoryTitle{
+    letter-spacing: 2px;
+    font-size: 30px;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+
+.ProductArea{
+    display: flex;
+}
+.Product{
+    width: 300px;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 10px 10px 0;   
+}
+.Product > .ProductImage{
+    width: 80%;
+    height: 300px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.Product > .ProductImage > img{
+    max-width: 100%;
+    height: 300px;
+}
+.ProductDetails{
+    margin: 20px 0;
+}
+
+.ContentBody{
+    display: flex;
+}
+.ContentBody .SideMenu{
+    flex: 2;
+}
+.ContentBody .MainContent{
+    flex: 8;
+}

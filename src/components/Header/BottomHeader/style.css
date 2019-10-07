@@ -1,0 +1,51 @@
+
+.BottomHeader{
+    display: flex;
+    justify-content: center;
+}
+.Menu{
+    display: flex;
+    position: relative;
+}
+.MenuItem{
+    list-style: none;
+    display: block;
+    padding: 10px;
+    position: relative;
+}
+.Dropdown{
+    position: absolute;
+    background: #fff;
+    display: none;
+    margin-top: 10px;
+    width: 450px;
+    opacity: 0;
+    transition: all 0.4s linear;
+    box-shadow: 0 0 4px -1px grey;
+    padding: 20px 10px;
+}
+.Dropdown > li{
+    float: left;
+    width: 25%;
+}
+/* .Dropdown > .Column{
+    
+} */
+.Menu .MenuItem > a{
+    color: #333;
+    text-decoration: none;
+}
+.MenuItem:hover > .Dropdown{
+    display: block;
+    opacity: 1;
+}
+
+.Dropdown > li > ul > li{
+    margin: 5px 0;
+}
+.Dropdown > li > ul > li > a{
+    color: #666;
+}
+.Dropdown > li > ul > li > a:hover{
+    text-decoration-line: underline;
+}

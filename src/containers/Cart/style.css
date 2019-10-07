@@ -1,0 +1,17 @@
+.CartWrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+.CartWrapper > .CartDetails{
+    width: 65%;
+    box-shadow: 0 0 2px 0px #cecece;
+}
+.CartWrapper > .PriceWrapper{
+    width: 30%;
+    box-shadow: 0 0 2px 0px #cecece;
+}
+.CardTitle{
+    padding: 10px 20px;
+    border-bottom: 1px solid #cecece;
+}
