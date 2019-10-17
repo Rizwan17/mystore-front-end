@@ -1,0 +1,51 @@
+.Order{
+    width: 100%;
+    border: 1px solid #cecece;
+    margin: 5px 0;
+}
+.OrderHeader{
+    padding: 10px;
+    background: #cecece;
+}
+.OrderHeader > a{
+    display: inline-block;
+    padding: 5px 10px;
+    background: #333;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.OrderDescription{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    border: 1px solid #cecece;
+    font-size: 14px;
+    color:  #555;
+    font-family: 'Lato', sans-serif;
+}
+.od1{
+    width: 40%;
+}
+.odtitle{
+    font-weight: bold;
+}
+.odp{
+    display: inline-block;
+    padding: 5px 10px;
+    background: blueviolet;
+    border-radius: 2px;
+    color: #fff;
+    margin: 5px 10px;
+    text-transform: capitalize;
+}
+.OrderFooter{
+    border: 1px solid #cecece;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+}

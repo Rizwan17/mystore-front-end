@@ -5,6 +5,7 @@ import CartItem from './CartItem';
 import * as cartActions from '../../store/actions/cartActions';
 import * as authActions from '../../store/actions/authActions';
 import { connect } from 'react-redux';
+import CartPrice from '../../components/CartPrice';
 
 class Cart extends Component{
 
@@ -27,7 +28,12 @@ class Cart extends Component{
             product = {
                 productId: product.product,
                 quantity: parseInt(product.quantity) + parseInt(quantity),
-                total: product.total + parseFloat( product.price * quantity )
+                newQuantity: quantity,
+                price: product.price,
+                total: parseFloat(product.total) + parseFloat( product.price * quantity )
+            }
+            if(product.quantity <= 0){
+                return;
             }
             const response = await this.props.updateCart(auth.token, auth.user.userId, product);
             if(response.ok == 1){
@@ -43,20 +49,22 @@ class Cart extends Component{
         
     }
 
-    changeQuantity = (e) => {
+    changeQuantity = (e, productId) => {
 
-        if(isNaN(e.target.value)){
-            return;
-        }
+        // console.log(e.target.value);
 
-        const firstDigit = parseInt(e.target.value.split("")[0]);
-        if(firstDigit === 0){
-            return;
-        }
+        // if(isNaN(e.target.value)){
+        //     return;
+        // }
 
-        this.setState({
-            [e.target.name] : e.target.value
-        })
+        // const firstDigit = parseInt(e.target.value.split("")[0]);
+        // if(firstDigit === 0){
+        //     return;
+        // }
+
+        // //alert(e.target.value);
+
+        // this.updateCart(productId, parseInt(e.target.value));
     }
 
     componentDidMount() {
@@ -121,13 +129,15 @@ class Cart extends Component{
                                 }
                                 
 
+                                <div className="PlaceOrder">
+                                    <button className="PlaceOrderButton" onClick={() => this.props.history.push('/place-order')}>Place Order</button>
+                                </div>
 
                             </div>
                         </div>
-                        <div className="PriceWrapper">
-                            {/* show price */}
-                            price
-                        </div>
+                        
+                        <CartPrice />
+
                     </div>
                 </div>
             </React.Fragment>

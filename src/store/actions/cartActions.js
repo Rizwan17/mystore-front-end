@@ -1,6 +1,7 @@
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const GET_CART_DETAILS = 'GET_CART_DETAILS';
 export const UPDATE_CART = 'UPDATE_CART';
+export const CLEAR_CART = 'CLEAR_CART';
 
 export const addToCart = (token, cartItem) => {
     return async dispatch => {
@@ -90,5 +91,14 @@ export const updateCart = (token, userId, product) => {
         }catch(error){
             console.log(error);
         }
+    }
+}
+
+export const clearCart = () => {
+    return dispatch => {
+        dispatch({
+            type: CLEAR_CART,
+            payload: null
+        });
     }
 }

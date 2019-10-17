@@ -1,0 +1,13 @@
+.NormalInput{
+    width:  100%;
+    height: 40px ;
+    background: #fff;
+    border: 1px solid #cecece;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+}
+.NormalInput::placeholder{
+    font-family: 'Lato', sans-serif;
+}

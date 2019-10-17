@@ -19,7 +19,8 @@ class TopHeader extends Component{
                             </ul>;
         if(this.props.auth.isAuthenticated){
             guestAccount = <ul className="Dropdown Account">
-                                <li><Link to="" onClick={() => this.props.logout()}><i className="fas fa-user"></i>&nbsp;&nbsp;<span>Logout</span></Link></li>
+                                <li><Link to="/orders"><i class="far fa-clipboard"></i>&nbsp;&nbsp;<span>Orders</span></Link></li>
+                                <li><Link to="" onClick={() => this.props.logout()}><i className="fas fa-sign-out-alt"></i>&nbsp;&nbsp;<span>Logout</span></Link></li>
                             </ul>;
         }
 
@@ -35,7 +36,7 @@ class TopHeader extends Component{
                     <ul className="TopMenu">
                         <li className="MenuItem">
                             <i className="far fa-user-circle"></i>
-                            <Link to="/account">My Account</Link>
+                            <Link to="/account">{this.props.auth.isAuthenticated ? this.props.auth.user.firstName: 'My Account'}</Link>
                             {guestAccount}
                         </li>
                     </ul>

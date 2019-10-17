@@ -1,7 +1,8 @@
-import { GET_PRODUCTS } from "../actions/productActions";
+import { GET_PRODUCTS, GET_PRODUCT_CATEGORIES } from "../actions/productActions";
 
 const initState = {
-    products: []
+    products: [],
+    categories: []
 }
 
 const productReducers = (state = initState, actions) => {
@@ -10,6 +11,12 @@ const productReducers = (state = initState, actions) => {
             state = {
                 ...state,
                 products: actions.products
+            }
+            break;
+        case GET_PRODUCT_CATEGORIES:
+            state = {
+                ...state,
+                categories: actions.categories
             }
             break;
         default:

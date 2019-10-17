@@ -6,12 +6,40 @@
 .CartWrapper > .CartDetails{
     width: 65%;
     box-shadow: 0 0 2px 0px #cecece;
-}
-.CartWrapper > .PriceWrapper{
-    width: 30%;
-    box-shadow: 0 0 2px 0px #cecece;
+    overflow: hidden;
 }
 .CardTitle{
     padding: 10px 20px;
     border-bottom: 1px solid #cecece;
+}
+.FinalBilling{
+    padding: 20px;
+}
+.Row{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.PlaceOrder{
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 0 15px 0px #c3c2c2;
+    margin-top: 20px;   
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.PlaceOrderButton{
+    border: 0;
+    outline: none;
+    background:  #fb641b;
+    color: #fff;
+    font-weight: bold;
+    width: 150px;
+    height: 40px;
+    text-transform: uppercase;
+    cursor: pointer;
 }

@@ -1,0 +1,47 @@
+.PlaceOrderWrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0; 
+}
+.DeliveryAddress{
+    width: 65%;
+}
+.Card{
+    width: 100%;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 2px 0px #cecece;
+    padding: 10px 20px; 
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+.CardText{
+    color: #252525;
+    opacity: 0.7;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1   px;
+    margin: 10px 0; 
+}
+.DeliveryAddressButton, .ContinueButton, .OrderConfirmButton, .PaymentConfirm{
+    background: orange;
+    border: 0;
+    color: #252525;
+    font-size: 14px;    
+    box-shadow: 0 0 2px 0 #ccc;
+    color: #fff;
+    height: 35px;
+    padding: 0 20px;
+}
+.paymentType{
+    display: block;
+    padding: 10px 5px;
+    margin: 5px 0;
+    border: 1px solid #cecece;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+}
+.ErrorMessage{
+    color: red;
+    font-size: 12px;
+    margin: 10px 0;
+}

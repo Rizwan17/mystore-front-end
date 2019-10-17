@@ -51,3 +51,40 @@
 .ContentBody .MainContent{
     flex: 8;
 }
+.SideMenu{
+    border: 1px solid #cecece;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+.SideMenu .SideMenuTitle{
+    font-size: 18px;
+    border-bottom: 1px solid #cecece;
+    padding: 5px 10px;
+}
+.Filter .FilterTitle{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+.SideMenu ul{
+    position: relative;
+}
+.SideMenu ul li{
+    margin-left: 10px;
+    font-size: 14px;
+}
+.SideMenu > ul > li > a:nth-of-type(1){
+    font-weight: bold;
+}
+.FilterButton{
+    background: #eee;
+    border: 1px solid #cecece;
+    width: 95%;
+    margin: 2px 5px;
+    padding: 5px 0;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+}

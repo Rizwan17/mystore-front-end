@@ -1,4 +1,4 @@
-import { ADD_TO_CART, GET_CART_DETAILS, UPDATE_CART } from "../actions/cartActions"
+import { ADD_TO_CART, GET_CART_DETAILS, UPDATE_CART, CLEAR_CART } from "../actions/cartActions"
 
 const initState = {
     cartItem: [],
@@ -78,10 +78,16 @@ const cartReducers = (state = initState, actions) => {
             });
             state = {
                 cartItem: cartItems,
-                totalAmount: state.totalAmount + updateItem.total,
-                cartCount: updateItem.quantity
+                totalAmount: parseFloat(state.totalAmount) + parseFloat(updateItem.price * updateItem.newQuantity),
+                cartCount: parseInt(state.cartCount) + parseInt(updateItem.newQuantity)
             }
             break;
+        case CLEAR_CART:
+            state = {
+                cartItem: [],
+                totalAmount: 0,
+                cartCount: 0
+            }
         default:
             break;
     }

@@ -1,0 +1,14 @@
+.AddressSelection{
+    display: flex;
+}
+.AddressAuthor{
+    font-size: 16px;
+    font-weight: bold;
+    color: #252525;
+}
+.AuthorAddress{
+    font-size: 14px;
+    color: #252525;
+    opacity: 0.7;
+    margin: 15px 0;
+}
