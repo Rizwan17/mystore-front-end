@@ -21,8 +21,7 @@ const NormalInput = props => {
                                 className="NormalInput" 
                                 placeholder={props.placeholder}
                                 value={props.value}
-                                onChange={props.inputHandler}
-                                {...props} />
+                                onChange={props.inputHandler} />
                     break;
         case 'select':
                 input = <select>

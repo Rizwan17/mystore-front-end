@@ -80,9 +80,9 @@ class Orders extends Component{
                         {
                             this.state.ordersList.map(order => {
                                 return (
-                                    <div className="Order">
+                                    <div key={order._id} className="Order">
                                         <div className="OrderHeader">
-                                            <Link>{order._id}</Link>
+                                            <a href="#">{order._id}</a>
                                         </div>
                                         <div className="OrderDescription">
                                             <div className="od1">
@@ -101,7 +101,7 @@ class Orders extends Component{
                                         </div>
                                         <div>
                                             {order.order.map(item => (
-                                                <div style={{display: 'flex', alignItems: 'center', margin: '5px 0', borderBottom: '1px solid #cecece'}}>
+                                                <div key={item._id} style={{display: 'flex', alignItems: 'center', margin: '5px 0', borderBottom: '1px solid #cecece'}}>
                                                     <div style={{width: '80px', height: '80px', overflow: 'hidden', position: 'relative'}} className="ImageContainer">
                                                         <img style={{maxWidth: '100%', maxHeight: '100%', position: 'absolute', left: '50%', transform: 'translateX(-50%)'}} src={item.product.productPic[0].img}/>
                                                     </div>

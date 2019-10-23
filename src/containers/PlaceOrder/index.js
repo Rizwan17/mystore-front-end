@@ -9,13 +9,14 @@ import CartPrice from '../../components/CartPrice';
 import DeliveryAddress from './DeliveryAddress';
 import RadioButton from '../../components/UI/RadioButton';
 import * as cartActions from '../../store/actions/cartActions';
+import { base_url } from '../../constants';
 
 class PlaceOrder extends Component{
 
     state = {
         addresses: [],
         address: {
-            fullName: "Rizwan",
+            fullName: "",
             mobileNumber: "",
             pinCode: "",
             locality: "",
@@ -75,6 +76,7 @@ class PlaceOrder extends Component{
             }
         })
         .then(jsonResponse => {
+            console.log(jsonResponse)
             this.setState({
                 addresses: jsonResponse.message.address
             })
@@ -115,13 +117,51 @@ class PlaceOrder extends Component{
 
     addressSubmitHandler = (e) => {
         e.preventDefault();
-        console.log(this.state.address);
+        console.log(this.state.address)
+
+        const address = {
+            userId: this.props.auth.user.userId,
+            address: this.state.address
+        }
+
+       fetch(`${base_url}/user/new-address`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': this.props.auth.token
+            },
+            method: 'POST',
+            body: JSON.stringify(address)
+       })
+       .then(response => response.json())
+       .then(jsonResponse => {
+           console.log('new address');
+           console.log(jsonResponse);
+           console.log('new address');
+          
+           //this.getAddresses();
+           //console.log(jsonResponse.message);
+           const updatedAddressList = jsonResponse.message.address;
+           this.setState({
+                isAddressConfirm: true,
+                address: {
+                    ...this.state.address,
+                    ...address.address
+                },
+                addresses: updatedAddressList,
+                selectedAddress: updatedAddressList[updatedAddressList.length - 1]._id
+            });
+           
+       })
+       .catch(error => {
+           console.log(error);
+       })
     }
 
     confirmDeliveryAddress = () => {
         this.setState({
             isAddressConfirm: true
         });
+
     }
 
     confirmOrder = () => {
@@ -190,14 +230,11 @@ class PlaceOrder extends Component{
     render() {
 
         let address;
-        if(this.state.isAddressConfirm){
+        if(this.state.isAddressConfirm && !this.state.newAddress){
             address = this.state.addresses.find(address => address._id === this.state.selectedAddress);
         }else{
-            address = {};
+            address = this.state.address;
         }
-
-        console.log(this.props.cart);
-        
 
         return (
             <React.Fragment>
@@ -257,7 +294,6 @@ class PlaceOrder extends Component{
                                                 address={this.state.address}
                                                 inputHandler={this.inputHandler}
                                                 addressSubmitHandler={this.addressSubmitHandler}
-                                                confirmDeliveryAddress={this.confirmDeliveryAddress}
                                             /> : null
                                     }
                                     

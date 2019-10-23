@@ -105,7 +105,7 @@ const AddressForm = props =>  {
                     </div>
 
                     <div className="Row">
-                        <button onClick={props.confirmDeliveryAddress} className="DeliveryAddressButton">SAVE AND DELIVER HERE</button>
+                        <button className="DeliveryAddressButton">SAVE AND DELIVER HERE</button>
                     </div>
 
             </form>

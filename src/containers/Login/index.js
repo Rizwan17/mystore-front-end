@@ -8,6 +8,7 @@ import SubmitGradientButton from '../../components/UI/SubmitGradientButton';
 
 import * as authActions from '../../store/actions/authActions';
 import { connect } from 'react-redux';
+import Error from '../../components/Error';
 
 
 class Login extends Component {
@@ -15,7 +16,9 @@ class Login extends Component {
     state = {
         redirectToReferrer: false,
         email: '',
-        password: ''
+        password: '',
+        isError: false,
+        errorMessage: ''
     }
 
     textHandler = (e) => {
@@ -24,8 +27,29 @@ class Login extends Component {
         })
     }
 
+    setError = (error, message) => {
+        this.setState({
+            error: error,
+            errorMessage: message
+        })
+    }
+
     loginHandler = (e) => {
         e.preventDefault();
+
+        if(this.state.email === ''){
+            this.setError(true, 'Enter Email'); return;
+        }
+
+        const emailPattern = new RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/);
+        if(!emailPattern.test(this.state.email)){
+            this.setError(true, 'Invalid Email Address'); return;
+        }
+
+        if(this.state.password === ''){
+            this.setError(true, 'Enter Password'); return;
+        }
+
         this.props.authenticate(this.state.email, this.state.password)
         .then(response => {
             console.log(response);
@@ -66,6 +90,8 @@ class Login extends Component {
             return <Redirect to="/" />
         }
 
+        
+
         return (
             <div className="LoginContainer">
                 <div className="WelcomeText">
@@ -73,6 +99,7 @@ class Login extends Component {
                 </div>
                 <Logo style={{margin: '0 auto'}} />
                 <div className="LoginWrapper">
+                    <p></p>
                     <form onSubmit={this.loginHandler} autoComplete="off">
 
                         <MobileTypeInput 
@@ -89,11 +116,19 @@ class Login extends Component {
                             textHandler={this.textHandler}
                             name="password"
                         />
+
+                        <Error>
+                            {this.state.errorMessage}
+                        </Error>
+                        
                         <SubmitGradientButton 
                             label="Login"
                             style={{marginTop: '30px'}}
                         />
                     </form>
+
+                    
+
                 </div>
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>
                     <Link to="/signup">Create a new account</Link>

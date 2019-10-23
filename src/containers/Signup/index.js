@@ -7,6 +7,7 @@ import * as authActions from '../../store/actions/authActions';
 
 import { Link, Redirect } from 'react-router-dom';
 import  { connect } from 'react-redux';
+import Error from '../../components/Error';
 
 class Signup extends Component {
 
@@ -17,7 +18,9 @@ class Signup extends Component {
             lastName: '',
             email: '',
             password: '',
-            repassword: ''
+            repassword: '',
+            isError: false,
+            errorMessage: ''
         }
     }
 
@@ -32,9 +35,70 @@ class Signup extends Component {
         })
     }
 
+    setError = (error, message) => {
+        const { signupForm } = this.state;
+        const updatedSignupForm = {
+            ...signupForm,
+            isError: error,
+            errorMessage: message
+        }
+        this.setState({
+            signupForm: updatedSignupForm
+        });
+    }
+
     signupHandler = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        const { signupForm } = this.state;
+        if(signupForm.firstName === ''){
+            this.setError(true, 'Enter First Name'); return;
+        }
+        if(signupForm.lastName === ''){
+            this.setError(true, 'Enter Last Name');
+            return;
+        }
+
+        const emailPattern = new RegExp(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/);
+        if(!emailPattern.test(signupForm.email)){
+            this.setError(true, 'Invalid Email Address'); return;
+        }
+
+        if(signupForm.email === ''){
+            this.setError(true, 'Enter Email');
+            return;
+        }
+        if(signupForm.password === ''){
+            this.setError(true, 'Enter Password');
+            return;
+        }
+        if(signupForm.repassword === ''){
+            this.setError(true, 'Enter Repassword');
+            return;
+        }
+        if(signupForm.password !== signupForm.repassword){
+            this.setError(true, 'Password dosent match');
+            return;
+        }
+
+        const user = {
+            firstName: signupForm.firstName,
+            lastName: signupForm.lastName,
+            email: signupForm.email,
+            password: signupForm.password
+        }
+
+        this.props.signup(user)
+        .then(jsonResponse => {
+            console.log(jsonResponse);
+            this.props.history.push({
+                pathname: '/login',
+               search: '?signup=success',
+               state: jsonResponse.message 
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
 
     componentDidMount() {
@@ -115,6 +179,11 @@ class Signup extends Component {
                             textHandler={this.textHandler}
                             name="repassword"
                         />
+                        
+                        <Error>
+                            {this.state.signupForm.errorMessage}
+                        </Error>
+
                         <SubmitGradientButton 
                             label="Signup"
                             style={{marginTop: '30px'}}
@@ -134,7 +203,7 @@ class Signup extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        authenticate: (email, password) => dispatch(authActions.authenticate(email, password)),
+        signup: (user) => dispatch(authActions.signup(user)),
         getToken: () => dispatch(authActions.getToken())
     }
 }
