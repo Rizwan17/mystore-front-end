@@ -63,7 +63,7 @@ class PlaceOrder extends Component{
 
     getAddresses = () => {
         const userId = this.props.auth.user.userId;
-        fetch('http://localhost:2019/user/get-addresses/'+userId, {
+        fetch(`${base_url}/user/get-addresses/`+userId, {
             headers: {
                 'auth-token': this.props.auth.token
             }
@@ -196,7 +196,7 @@ class PlaceOrder extends Component{
 
         try{
 
-            const response = await fetch('http://localhost:2019/order/create',{
+            const response = await fetch(`${base_url}/order/create`,{
                 headers: {
                     'Content-Type': 'application/json',
                     'auth-token': this.props.auth.token

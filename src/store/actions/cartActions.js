@@ -1,3 +1,5 @@
+import { base_url } from "../../constants";
+
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const GET_CART_DETAILS = 'GET_CART_DETAILS';
 export const UPDATE_CART = 'UPDATE_CART';
@@ -6,7 +8,7 @@ export const CLEAR_CART = 'CLEAR_CART';
 export const addToCart = (token, cartItem) => {
     return async dispatch => {
         try{
-            const response = await fetch('http://localhost:2019/cart/add', {
+            const response = await fetch(`${base_url}/cart/add`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'auth-token': token
@@ -34,7 +36,7 @@ export const getCartItems = (token, userId) => {
 
         try{
 
-            const response = await fetch(`http://localhost:2019/cart/user/${userId}`, {
+            const response = await fetch(`${base_url}/cart/user/${userId}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'auth-token': token
@@ -63,7 +65,7 @@ export const updateCart = (token, userId, product) => {
     return async dispatch => {
         try{
 
-            const response = await fetch('http://localhost:2019/cart/update/quantity',{
+            const response = await fetch(`${base_url}/cart/update/quantity`,{
                 headers: {
                     'Content-Type': 'application/json',
                     'auth-token': token

@@ -6,6 +6,7 @@ import * as cartActions from '../../store/actions/cartActions';
 import * as authActions from '../../store/actions/authActions';
 
 import './style.css';
+import { base_url } from '../../constants';
 
 class ProductDetails extends Component{
 
@@ -38,7 +39,7 @@ class ProductDetails extends Component{
 
         
         const { category, slug } = this.props.match.params;
-        fetch(`http://localhost:2019/products/${category}/${slug}`)
+        fetch(`${base_url}/products/${category}/${slug}`)
         .then(response => response.json())
         .then(jsonResponse => {
 

@@ -29,7 +29,7 @@ export const signup = (user) => {
 
 export const authenticate = (email, password) => {
     return async dispatch => {
-        const response = await fetch('http://localhost:2019/user/login', {
+        const response = await fetch(`${base_url}/user/login`, {
             headers: {
                 'Content-Type' : 'application/json',
                 'Accepts': 'application/json'

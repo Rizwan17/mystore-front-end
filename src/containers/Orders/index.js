@@ -4,6 +4,7 @@ import './style.css';
 import Header from '../../components/Header/Header';
 import * as authActions from '../../store/actions/authActions';
 import { connect } from 'react-redux';
+import { base_url } from '../../constants';
 
 class Orders extends Component{
 
@@ -33,7 +34,7 @@ class Orders extends Component{
         console.log(this.props.auth.isAuthenticated)
         const token =  this.props.auth.token;
         const userId = this.props.auth.user.userId;
-        fetch(`http://localhost:2019/order/getorders/${userId}`, {
+        fetch(`${base_url}/order/getorders/${userId}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'auth-token': token

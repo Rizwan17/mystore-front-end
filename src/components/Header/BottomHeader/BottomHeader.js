@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './style.css';
+import { base_url } from '../../../constants';
 
 class BottomHeader extends Component{
 
@@ -10,7 +11,7 @@ class BottomHeader extends Component{
     }
 
     componentDidMount() {
-        fetch('http://localhost:2019/category', {
+        fetch(`${base_url}/category`, {
             headers: {
                 'Content-Type' : 'application/json'
             }
